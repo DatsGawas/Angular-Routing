@@ -9,6 +9,8 @@ import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'resolve',
   template:`    
+    
+    <h1>Resolve</h1>
   `
 })
 
@@ -28,7 +30,8 @@ export class ResolveService implements Resolve {
   constructor(private _http: HttpClient) {
   }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-   this.getData();
+  // this.getData();
+    console.log('Im Resolve');
   }
 
   getData() {
