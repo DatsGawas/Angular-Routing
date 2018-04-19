@@ -7,18 +7,23 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'home',
   template:`
-
-    <amexio-btn-group>
+    
       <amexio-button [label]="'lazy load'"
                      [type]="'theme-color'">
       </amexio-button>
-      <amexio-button [label]="'load component'"
+      <amexio-button (onClick)="loadChild()" [label]="'load child component'"
                      [type]="'green'" >
       </amexio-button>
       <amexio-button [label]="'Auxilary route'"
                      [type]="'red'" >
       </amexio-button>
-    </amexio-btn-group>
+
+      <amexio-button  (onClick)="loadResolveChild()" [label]="'Resolve Interface'"
+                     [type]="'red'" >
+      </amexio-button>
+  
+    
+    <router-outlet></router-outlet>
 
 
   `
@@ -26,10 +31,18 @@ import {Router} from "@angular/router";
 
 export class HomeComponent implements OnInit {
   constructor(public routeState: Router) {
-    debugger
     console.log(this.routeState.routerState);
   }
 
   ngOnInit() {
+  }
+
+  loadChild() {
+    this.routeState.navigate(['/home/profile']);
+  }
+
+  loadResolveChild() {
+    this.routeState.navigate(['/home/resolve']);
+
   }
 }
