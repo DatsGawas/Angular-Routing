@@ -14,6 +14,10 @@ import {HomeRouteGuardService} from "./route-guard/home-route-guard.service";
 import {ProfileComponent} from "./home/profile/profile.component";
 import {ResolveComponent, ResolveService} from "./home/resolve/resolve.component";
 import {HttpClientModule} from "@angular/common/http";
+import {AuxComponent} from "./home/aux/aux.component";
+import {RepeatComponent} from "./home/repeat/repeat.component";
+import {CountryService} from "./home/profile/country.service";
+import {DepartmentDetailsComponent} from "./home/repeat/department.details";
 
 const routeConst: Routes = [
   {
@@ -26,10 +30,19 @@ const routeConst: Routes = [
     path: 'home', canActivate: [HomeRouteGuardService], component: HomeComponent,
     children: [
       {
-        path: 'profile', canActivateChild: [HomeRouteGuardService], component: ProfileComponent
+        path: 'profile/:id', canActivateChild: [HomeRouteGuardService], component: ProfileComponent
       },
       {
-        path: 'resolve', resolve: {user: ResolveService}, component: ResolveComponent
+        path: 'resolve', outlet: 'resolve', resolve: {user: ResolveService}, component: ResolveComponent
+      },
+      {
+        path: 'aux', outlet: 'aux11',  component: AuxComponent
+      },
+      {
+        path: 'department' , component: RepeatComponent
+      },
+      {
+        path: 'department/:id' , component: DepartmentDetailsComponent
       }
     ]
   },
@@ -41,13 +54,13 @@ const routeConst: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, PageNotFoundComponent, HomeComponent, ProfileComponent, ResolveComponent
+    AppComponent, RepeatComponent, AuxComponent, LoginComponent, PageNotFoundComponent, HomeComponent, ProfileComponent, ResolveComponent, DepartmentDetailsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, AmexioWidgetModule,
     RouterModule.forRoot(routeConst)
   ],
-  providers: [CookieService, HomeRouteGuardService, ResolveService],
+  providers: [CookieService, HomeRouteGuardService, ResolveService, CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

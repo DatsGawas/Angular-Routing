@@ -12,6 +12,7 @@ export class HomeRouteGuardService implements CanActivate {
 
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+
     if (this._cookieService.get('username') == 'dats') {
       return true;
     } else {

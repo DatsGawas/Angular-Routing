@@ -14,16 +14,24 @@ import {Router} from "@angular/router";
       <amexio-button (onClick)="loadChild()" [label]="'load child component'"
                      [type]="'green'" >
       </amexio-button>
-      <amexio-button [label]="'Auxilary route'"
+      <amexio-button (onClick)="loadAuxChild()" [label]="'Auxilary route'"
                      [type]="'red'" >
       </amexio-button>
+
+      <a [routerLink]="[{ outlets: { 'aux11': ['aux']}}]">Employee Manager</a>
 
       <amexio-button  (onClick)="loadResolveChild()" [label]="'Resolve Interface'"
                      [type]="'red'" >
       </amexio-button>
-  
-    
-    <router-outlet></router-outlet>
+      
+      <a (click)="repeatRoute()">Department</a>
+
+
+      <router-outlet></router-outlet>
+
+
+      <router-outlet name="aux11"></router-outlet>
+
 
 
   `
@@ -38,11 +46,23 @@ export class HomeComponent implements OnInit {
   }
 
   loadChild() {
-    this.routeState.navigate(['/home/profile']);
+    this.routeState.navigate(['/home/profile/', 2]);
   }
 
   loadResolveChild() {
     this.routeState.navigate(['/home/resolve']);
+
+  }
+
+  loadAuxChild() {
+   // this.routeState.navigate([{ outlets: {'aux11': ['aux']}]);
+
+    //this.routeState.navigate(['aux', { outlets: { 'aux': []}}]);
+
+
+  }
+  repeatRoute() {
+    this.routeState.navigate(['/home/department-list']);
 
   }
 }
