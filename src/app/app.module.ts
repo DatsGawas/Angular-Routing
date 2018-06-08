@@ -18,6 +18,7 @@ import {AuxComponent} from "./home/aux/aux.component";
 import {RepeatComponent} from "./home/repeat/repeat.component";
 import {CountryService} from "./home/profile/country.service";
 import {DepartmentDetailsComponent} from "./home/repeat/department.details";
+import {TestComponent} from "./login/test-component/test.component";
 
 const routeConst: Routes = [
   {
@@ -33,7 +34,7 @@ const routeConst: Routes = [
         path: 'profile/:id', canActivateChild: [HomeRouteGuardService], component: ProfileComponent
       },
       {
-        path: 'resolve', outlet: 'resolve', resolve: {user: ResolveService}, component: ResolveComponent
+        path: 'resolve', component: ResolveComponent
       },
       {
         path: 'aux', outlet: 'aux11',  component: AuxComponent
@@ -54,7 +55,7 @@ const routeConst: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent, RepeatComponent, AuxComponent, LoginComponent, PageNotFoundComponent, HomeComponent, ProfileComponent, ResolveComponent, DepartmentDetailsComponent
+    AppComponent, RepeatComponent, AuxComponent, LoginComponent, PageNotFoundComponent, HomeComponent, ProfileComponent, ResolveComponent, DepartmentDetailsComponent, TestComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, AmexioWidgetModule,

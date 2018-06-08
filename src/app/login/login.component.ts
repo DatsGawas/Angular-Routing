@@ -26,7 +26,10 @@ import {CookieService} from "ngx-cookie-service";
     <amexio-button (onClick)="loginClick()" [label]="'Login'" [type]="'theme-color'" [tooltip]="'login'">
     </amexio-button>
   </amexio-column>
-  <amexio-column [size]="'3'"></amexio-column>
+  <amexio-column [size]="'3'">
+    
+    <test [isTrue-tt]="testBoolean"></test>
+  </amexio-column>
   
 </amexio-row>
         `
@@ -35,6 +38,7 @@ import {CookieService} from "ngx-cookie-service";
 
 export class LoginComponent implements OnInit {
   loginModel: LoginModel;
+  testBoolean: boolean;
   constructor(private route: Router, private _cookieService: CookieService) {
     this.loginModel = new LoginModel();
   }
@@ -43,10 +47,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick() {
-    if(this.loginModel.userName != '' && this.loginModel.password != '') {
+    this.testBoolean = !this.testBoolean;
+    /*if(this.loginModel.userName != '' && this.loginModel.password != '') {
       this._cookieService.set('username', this.loginModel.userName);
        this.route.navigate(['/home']);
-    }
+    }*/
 
   }
 }

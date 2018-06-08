@@ -15,40 +15,20 @@ import {HttpClient} from "@angular/common/http";
 })
 
 export class ResolveComponent implements OnInit {
-  constructor() {
+ /* constructor() {
   }
 
   ngOnInit() {
   }
-
+*/
 }
 
 
 
 @Injectable()
-export class ResolveService implements Resolve {
-  constructor(private _http: HttpClient) {
-  }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+export class ResolveService {
+}
+ /* resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
   // this.getData();
     console.log('Im Resolve');
-  }
-
-  getData() {
-    let data: any;
-    this._http.get('/assets/country.json').subscribe(
-      response => {
-        data = response;
-      },
-      err => {},
-      () => {
-        console.log(JSON.stringify(data);
-      });
-  }
-
-
-
-
-
-
-}
+  }*/

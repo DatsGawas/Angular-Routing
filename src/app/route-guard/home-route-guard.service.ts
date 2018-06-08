@@ -3,7 +3,7 @@
  */
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 import {CookieService} from "ngx-cookie-service";
 
 @Injectable()

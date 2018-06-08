@@ -10,6 +10,10 @@ import {CountryService} from "./country.service";
   template:`
   <h1>profile</h1>
     {{countryData | json}}
+    
+    <template>
+      
+    </template>
   `
 })
 
